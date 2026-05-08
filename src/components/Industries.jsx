@@ -24,7 +24,7 @@ const industries = [
 
 const Industries = () => {
   return (
-    <section className="pt-48 pb-32 bg-white border-t border-gray-100" id="industries">
+    <section className="pt-32 pb-32 bg-white border-t border-gray-100" id="industries">
       <div className="container mx-auto px-6 lg:px-20">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-20 gap-8">
           <div className="max-w-4xl">

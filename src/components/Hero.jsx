@@ -7,7 +7,7 @@ const Hero = () => {
   const [showVideo, setShowVideo] = useState(false);
 
   return (
-    <section className="relative min-h-screen flex items-start pt-40 lg:pt-52 pb-40 overflow-hidden bg-[#F8F9FA]" id="home">
+    <section className="relative min-h-screen flex items-start pt-40 lg:pt-52 pb-20 overflow-hidden bg-[#F8F9FA]" id="home">
       <div className="container mx-auto px-6 lg:px-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <div className="lg:col-span-7">
@@ -91,4 +91,20 @@ const Hero = () => {
           >
             <X size={40} />
           </button>
-          <div className="w-full max-w-6xl aspect-v
+          <div className="w-full max-w-6xl aspect-video rounded-3xl overflow-hidden shadow-2xl">
+            <iframe 
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/t1YCszQgUp8?autoplay=1" 
+              title="YouTube video player" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+};
+
+export default Hero;

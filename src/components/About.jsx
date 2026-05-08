@@ -1,40 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { Check } from 'lucide-react';
 import aboutImg from '../assets/cement.png';
 import Counter from './Counter';
 
 const About = () => {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const containerRef = useRef(null);
-
-  const handleMouseMove = (e) => {
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      setMousePos({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
-      });
-    }
-  };
-
   return (
     <section 
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
       className="section-padding bg-[#0A0A0A] text-white relative overflow-hidden" 
       id="about-us"
     >
-      {/* Flashlight Overlay */}
-      <div 
-        className="pointer-events-none absolute inset-0 z-10 hidden lg:block"
-        style={{
-          background: `radial-gradient(circle 400px at ${mousePos.x}px ${mousePos.y}px, rgba(0, 86, 164, 0.15), transparent 80%)`
-        }}
-      ></div>
-      
-      {/* Background Texture revealed by flashlight */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")' }}></div>
-
       <div className="container mx-auto relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div className="order-2 lg:order-1">
@@ -56,7 +30,7 @@ const About = () => {
             
             <h2 className="text-5xl lg:text-7xl font-bold mb-10 tracking-tighter leading-[0.9] uppercase">
               Pioneers of <br />
-              <span className="text-industrial-blue italic text-shimmer">Filter</span> <br />
+              <span className="text-industrial-blue italic">Filter</span> <br />
               Technology
             </h2>
             

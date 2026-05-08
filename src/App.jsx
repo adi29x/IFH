@@ -9,14 +9,9 @@ import WhyChooseUs from './components/WhyChooseUs';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 
-import CustomCursor from './components/CustomCursor';
-import ScrollToTop from './components/ScrollToTop';
-
 function App() {
   return (
     <div className="min-h-screen">
-      <CustomCursor />
-      <ScrollToTop />
       <Navbar />
       <main>
         <Hero />
