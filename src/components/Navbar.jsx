@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight, Phone, Mail } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,7 +17,12 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    'Home', 'About Us', 'Industries', 'Solutions', 'Services', 'Spare Parts', 'Clients', 'Info', 'Career'
+    { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/#about-us' },
+    { name: 'Industries', path: '/#industries' },
+    { name: 'Solutions', path: '/#solutions' },
+    { name: 'Blog', path: '/blog' },
+    { name: 'Career', path: '/#career' }
   ];
 
   return (
@@ -42,7 +49,7 @@ const Navbar = () => {
 
       <nav className={`transition-all duration-500 ${isScrolled ? 'bg-white/80 backdrop-blur-xl py-3 shadow-xl border-b border-white/20' : 'bg-white/95 py-5 shadow-sm'}`}>
         <div className="container mx-auto px-6 lg:px-20 flex justify-between items-center">
-          <div className="flex items-center gap-4">
+          <Link to="/" className="flex items-center gap-4">
             <img 
               src={logo} 
               alt="Intensiv-Filter Himenviro" 
@@ -52,13 +59,19 @@ const Navbar = () => {
             <span className="hidden xl:block text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] leading-tight">
               Pioneers of <br /> Filter Technology
             </span>
-          </div>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-8">
             <ul className={`flex gap-6 font-bold text-[10px] uppercase tracking-[0.15em] text-industrial-charcoal`}>
               {navLinks.map((link) => (
-                <li key={link}><a href={`#${link.toLowerCase().replace(' ', '-')}`} className="hover:text-industrial-blue transition-colors">{link}</a></li>
+                <li key={link.name}>
+                  {link.path.startsWith('/#') ? (
+                    <a href={link.path} className="hover:text-industrial-blue transition-colors">{link.name}</a>
+                  ) : (
+                    <Link to={link.path} className={`hover:text-industrial-blue transition-colors ${location.pathname === link.path ? 'text-industrial-blue' : ''}`}>{link.name}</Link>
+                  )}
+                </li>
               ))}
             </ul>
             
@@ -82,7 +95,15 @@ const Navbar = () => {
           </div>
           <ul className="flex flex-col gap-6 text-2xl font-bold tracking-tighter text-industrial-charcoal">
             {navLinks.map((link) => (
-              <li key={link}><a href="#" onClick={() => setMobileMenuOpen(false)}>{link}</a></li>
+              <li key={link.name}>
+                <Link 
+                  to={link.path} 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={location.pathname === link.path ? 'text-industrial-blue' : ''}
+                >
+                  {link.name}
+                </Link>
+              </li>
             ))}
             <li><a href="#" onClick={() => setMobileMenuOpen(false)}>Contact Us</a></li>
           </ul>

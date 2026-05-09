@@ -1,5 +1,6 @@
 import React from 'react';
 import { Send, Phone, Mail, MapPin, Linkedin, Twitter, Youtube, ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 const Footer = () => {
@@ -8,7 +9,9 @@ const Footer = () => {
       <div className="container mx-auto px-6 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
           <div>
-            <img src={logo} alt="IFH Logo" className="h-12 mb-8" />
+            <Link to="/">
+              <img src={logo} alt="IFH Logo" className="h-12 mb-8" />
+            </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-8">
               A 100 Years Old Legacy in Industrial Filtration Technology. Global leaders in Clean Air Technology.
             </p>
@@ -25,18 +28,18 @@ const Footer = () => {
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest mb-8 text-industrial-blue">Quick Links</h4>
             <ul className="space-y-4 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Industries</a></li>
+              <li><Link to="/#about-us" className="hover:text-white transition-colors">About Us</Link></li>
+              <li><Link to="/#industries" className="hover:text-white transition-colors">Industries</Link></li>
+              <li><Link to="/blog" className="hover:text-white transition-colors font-bold text-industrial-blue">Our Blog</Link></li>
               <li><a href="#" className="hover:text-white transition-colors">Become A Dealer</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Become A Vendor</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Downloads</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest mb-8 text-industrial-blue">Info & Media</h4>
             <ul className="space-y-4 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">IFH News</a></li>
+              <li><Link to="/blog" className="hover:text-white transition-colors">IFH News</Link></li>
               <li><a href="#" className="hover:text-white transition-colors">IFH Press</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Career</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Contact Us</a></li>
